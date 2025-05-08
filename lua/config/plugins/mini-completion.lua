@@ -9,7 +9,7 @@ return {
     local pkg = require("mini.completion")
     pkg.setup {
       lsp_completion = {
-        source_func = "completefunc",
+        source_func = "omnifunc",
         auto_setup = true,
       },
       window = {

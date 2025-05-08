@@ -1,5 +1,6 @@
 -- NeoVim
 vim.cmd([[syntax on]])
+vim.cmd([[filetype on]])
 vim.cmd([[filetype plugin on]])
 
 vim.opt.foldenable = false
@@ -39,6 +40,3 @@ vim.opt.autoindent = true
 -- Cursorline and cursorcolumn
 vim.api.nvim_create_autocmd({ "WinLeave" }, { command = "set nocursorline nocursorcolumn" })
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, { command = "set cursorline cursorcolumn" })
-
--- Trim whitespaces on save
-vim.api.nvim_create_autocmd({ "BufWritePre" }, { command = ":%s/\\s\\+$//e" })

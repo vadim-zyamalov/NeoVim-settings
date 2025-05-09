@@ -2,7 +2,7 @@ return {
   -- nvim-lspconfig - встроенный набор настроек для работы LSP с разными языками.
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "FileType" },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("my.lsp", {}),

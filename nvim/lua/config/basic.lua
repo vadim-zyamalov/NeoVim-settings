@@ -40,3 +40,4 @@ vim.opt.autoindent = true
 -- Cursorline and cursorcolumn
 vim.api.nvim_create_autocmd({ "WinLeave" }, { command = "set nocursorline nocursorcolumn" })
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, { command = "set cursorline cursorcolumn" })
+

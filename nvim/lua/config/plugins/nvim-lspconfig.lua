@@ -80,21 +80,25 @@ return {
       }
 
       for server, config in pairs(opts.servers) do
-        vim.lsp.config(server, config)
-        vim.lsp.enable(server)
+	if vim.fn.has("nvim-0.11") == 1 then
+	  vim.lsp.config(server, config)
+          vim.lsp.enable(server)
+	else
+	  require("lspconfig")[server].setup(config)
+	end
       end
     end,
   },
 
   -- Mason для автоматической установки LSP-серверов, линтеров и пр.
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
+      { "mason-org/mason.nvim", opts = {} },
     },
-    config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup()
-    end,
+    opts = {
+      automatic_enable = false,
+      ensure_installed = { "lua_ls", "basedpyright" }
+    }
   },
 }

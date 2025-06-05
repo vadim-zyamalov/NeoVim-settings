@@ -20,6 +20,11 @@ local opts = {
   change_detection = {
     notify = false,
   },
+  performance = { 
+    rtp = {
+      reset = false,
+    }
+  }
 }
 
 require("lazy").setup({

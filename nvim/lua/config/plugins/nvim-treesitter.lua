@@ -1,16 +1,16 @@
+-- Treesitter. Сложно сказать, куда его включать...
+-- Это и жнец, и швец, и на дуде игрец.
+
 local nv11 = vim.fn.has("nvim-0.11")
 local parsers = { "lua", "python", "latex" }
 
-return {
-  -- Treesitter. Сложно сказать, куда его включать...
-  -- Это и жнец, и швец, и на дуде игрец.
-
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  branch = nv11 == 1 and "main" or "master",
-  lazy = false,
-  config = function()
-    if nv11 == 1 then
+if nv11 == 1 then
+  return {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    branch = "main",
+    lazy = false,
+    config = function()
       local treesitter = require("nvim-treesitter")
       treesitter.install(parsers)
 
@@ -22,7 +22,16 @@ return {
           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
       })
-    else
+    end,
+  }
+else
+  return {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    branch = "master",
+    cond = (vim.fn.has("nvim-0.10") == 1),
+    lazy = false,
+    config = function()
       local treesitter = require("nvim-treesitter.configs")
       treesitter.setup {
         ensure_installed = parsers,
@@ -35,6 +44,6 @@ return {
           enable = true,
         },
       }
-    end
-  end,
-}
+    end,
+  }
+end

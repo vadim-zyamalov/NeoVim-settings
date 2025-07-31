@@ -6,7 +6,7 @@ return {
 
       require("lualine").setup {
         options = {
-          theme = "catppuccin",
+          theme = vim.g.custom_colorscheme,
         },
         sections = {
           lualine_x = {

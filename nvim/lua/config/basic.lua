@@ -41,3 +41,5 @@ vim.opt.autoindent = true
 vim.api.nvim_create_autocmd({ "WinLeave" }, { command = "set nocursorline nocursorcolumn" })
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, { command = "set cursorline cursorcolumn" })
 
+-- Color scheme
+vim.g.custom_colorscheme = "dracula"

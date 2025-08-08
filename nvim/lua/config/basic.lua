@@ -42,4 +42,4 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, { command = "set nocursorline nocurs
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, { command = "set cursorline cursorcolumn" })
 
 -- Color scheme
-vim.g.custom_colorscheme = "dracula"
+vim.g.custom_colorscheme = "vscode"

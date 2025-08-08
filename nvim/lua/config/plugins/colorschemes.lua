@@ -28,6 +28,16 @@ local schemes = {
       vim.cmd.colorscheme("catppuccin-mocha")
     end,
   },
+
+  vscode = {
+    "Mofiqul/vscode.nvim",
+    priority = 1000,
+    name = "vscode",
+    config = function()
+      vim.o.background = "dark"
+      vim.cmd.colorscheme("vscode")
+    end,
+  },
 }
 
 return schemes[vim.g.custom_colorscheme]

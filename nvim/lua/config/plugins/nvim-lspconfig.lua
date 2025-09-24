@@ -1,8 +1,12 @@
+local nv11 = vim.fn.has("nvim-0.11")
+
 return {
   -- nvim-lspconfig - встроенный набор настроек для работы LSP с разными языками.
   {
     "neovim/nvim-lspconfig",
     event = { "FileType" },
+    -- В Debian все не столь свежее, последняя поддерживаемая версия -- 2.5.0
+    version = (nv11 == 1) and nil or "2.5.0",
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("my.lsp", {}),
@@ -80,12 +84,12 @@ return {
       }
 
       for server, config in pairs(opts.servers) do
-	if vim.fn.has("nvim-0.11") == 1 then
-	  vim.lsp.config(server, config)
+        if nv11 == 1 then
+          vim.lsp.config(server, config)
           vim.lsp.enable(server)
-	else
-	  require("lspconfig")[server].setup(config)
-	end
+        else
+          require("lspconfig")[server].setup(config)
+        end
       end
     end,
   },
